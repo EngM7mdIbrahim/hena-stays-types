@@ -1,0 +1,21 @@
+{
+  "name": "hena-stays-types",
+  "version": "1.0.0",
+  "description": "Type definitions for Hena Stays projects",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "prepare": "npm run build"
+  },
+  "keywords": [
+    "types",
+    "typescript",
+    "hena-stays"
+  ],
+  "author": "Mohamed Ibrahim",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
