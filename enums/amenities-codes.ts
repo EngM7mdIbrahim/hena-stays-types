@@ -1,0 +1,15 @@
+export const AmenitiesCodes = {
+  ParkingSpace: "parking_space",
+  CentralAC: "central_ac",
+  LobbyInBuilding: "lobby_in_building",
+  Internet: "internet",
+  KidsPlayArea: "kids_play_area",
+  MaintenanceStaff: "maintenance_staff",
+  CctvSecurity: "cctv_security",
+  BalconyTerrace: "balcony_terrace",
+  SwimmingPool: "swimming_pool",
+  GymHealthClub: "gym-health_club",
+  WasteDisposal: "waste_disposal",
+  MaidsRoom: "maids_room",
+  SecurityStaff: "security_staff",
+};
