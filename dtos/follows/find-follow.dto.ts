@@ -1,5 +1,5 @@
-import { IdParamsQuery } from "@commonTypes";
-import { Follow } from "../../entities";
+import { IdParamsQuery } from "../../dtos/common";
+import { Follow } from "../../entities/Follow";
 import { Nullable } from "../../genericTypes";
 
 export type FindFollowRequest = IdParamsQuery;
