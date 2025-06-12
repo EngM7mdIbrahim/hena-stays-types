@@ -18,12 +18,12 @@ export type Filter<T> = {
   [K in keyof T]?: T[K] extends number | Date
     ? { min?: T[K]; max?: T[K] }
     : T[K] extends Array<infer U>
-      ? { elements: Filter<U> }
-      : T[K] extends object | undefined
-        ? Filter<T[K]>
-        : T[K] extends Extendable<any>
-          ? string
-          : T[K];
+    ? { elements: Filter<U> }
+    : T[K] extends object | undefined
+    ? Filter<T[K]>
+    : T[K] extends Extendable<any>
+    ? string
+    : T[K];
 };
 
 export type NotExtended<T> = {
@@ -34,8 +34,8 @@ export type FieldsPop<T> = {
   [K in keyof T]?: T[K] extends Array<infer U>
     ? FieldsPop<U> | true
     : T[K] extends Extendable<infer U>
-      ? FieldsPop<U> | true
-      : true;
+    ? FieldsPop<U> | true
+    : true;
 };
 
 export interface ValueRange<T> {
@@ -46,3 +46,47 @@ export interface ValueRange<T> {
 export type AtLeastOne<T> = {
   [K in keyof T]: Pick<T, K> & Partial<Omit<T, K>>;
 }[keyof T];
+
+type Join<K, P> = K extends string | number
+  ? P extends string | number
+    ? `${K}${"" extends P ? "" : "."}${P}`
+    : never
+  : never;
+
+// Figuring out paths of nested objects
+type Prev = [
+  never,
+  0,
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9,
+  10,
+  11,
+  12,
+  13,
+  14,
+  15,
+  16,
+  17,
+  18,
+  19,
+  20,
+  ...0[]
+];
+
+export type DictionaryKeyPaths<T, D extends number = 10> = [D] extends [never]
+  ? never
+  : T extends object
+  ? {
+      [K in keyof T]: K extends string | number
+        ? `${K}` | Join<K, DictionaryKeyPaths<T[K], Prev[D]>>
+        : never;
+    }[keyof T]
+  : "";
+// Figuring out paths of nested objects
