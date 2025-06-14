@@ -80,12 +80,12 @@ type Prev = [
   ...0[]
 ];
 
-export type DictionaryKeyPaths<T, D extends number = 10> = [D] extends [never]
+export type KeyPaths<T, D extends number = 10> = [D] extends [never]
   ? never
   : T extends object
   ? {
       [K in keyof T]: K extends string | number
-        ? `${K}` | Join<K, DictionaryKeyPaths<T[K], Prev[D]>>
+        ? `${K}` | Join<K, KeyPaths<T[K], Prev[D]>>
         : never;
     }[keyof T]
   : "";
